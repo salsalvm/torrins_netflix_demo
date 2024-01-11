@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:get/get.dart';
 import 'package:torrins_test/model/movie_data.dart';
 import 'package:torrins_test/res/app_urls.dart';
+import 'package:torrins_test/res/asset/home_images.dart';
 import 'package:torrins_test/res/colors.dart';
 import 'package:torrins_test/res/components/custom_button.dart';
 import 'package:torrins_test/res/constants.dart';
@@ -31,18 +32,33 @@ class MainCard extends StatelessWidget {
             margin:const EdgeInsets.symmetric(horizontal: 10),
             width: width,
             height: height,
+            
             decoration: BoxDecoration(
               borderRadius: kradius5,
-              image:  DecorationImage(
-                fit: BoxFit.cover,
-                image: NetworkImage(
-             Apis().imageAppendUrl+item.posterPath,
-                ),
+              
+            ),
+            child:
+              FadeInImage.assetNetwork(
+                
+                image:Apis().imageAppendUrl+item.posterPath ,
+                                placeholder: Assets.splash,
+                                placeholderFit: BoxFit.cover,
+                                fit: BoxFit.fill,
+                                imageErrorBuilder:
+                                    (BuildContext context, Object error, _) =>
+                                        Container(
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage(Assets.splash),
+                                    ),
+                                  ),
               ),
             ),
           ),
         ),
-
+// NetworkImage(
+//              Apis().imageAppendUrl+item.posterPath,
+//                 ),
         Visibility(
           visible:index%3==0?true:myList ?false:false ,
           child: Padding(

@@ -6,13 +6,11 @@ import 'package:torrins_test/repository/home_repository.dart';
 class HomeController extends GetxController {
   final HomeRepository homeRepo = HomeRepository();
 
- 
-  var demo ="";
+
   @override
   void onInit() {
     getTrendingMovie();
     getTopMovie();
-
     super.onInit();
   }
 

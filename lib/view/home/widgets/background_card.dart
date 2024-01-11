@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:get/get_state_manager/get_state_manager.dart';
+import 'package:torrins_test/res/asset/home_images.dart';
 import 'package:torrins_test/res/colors.dart';
 import 'package:torrins_test/res/components/custom_button.dart';
 import 'package:torrins_test/res/constants.dart';
@@ -14,17 +15,24 @@ class BackgroundCard extends StatelessWidget {
       init: HomeController(),
       builder: ((controller) => Stack(
             children: [
-              Container(
+              SizedBox(
                 width: double.infinity,
                 height: 480,
-                decoration: const BoxDecoration(
-                  image: DecorationImage(
-                    fit: BoxFit.cover,
-                    image: NetworkImage(
-                      kMainImage,
-                    ),
-                  ),
-                ),
+               child:
+              FadeInImage.assetNetwork(
+                image:kMainImage ,
+                                placeholder: Assets.splash,
+                                placeholderFit: BoxFit.fill,
+                                imageErrorBuilder:
+                                    (BuildContext context, Object error, _) =>
+                                        Container(
+                                  decoration: const BoxDecoration(
+                                    image: DecorationImage(
+                                      image: AssetImage(Assets.splash),
+                                    ),
+                                  ),
+              ),
+            ),
               ),
               Positioned(
                 bottom: 0,

@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
 import 'package:torrins_test/res/asset/home_images.dart';
 import 'package:torrins_test/res/colors.dart';
 import 'package:torrins_test/utils/routes/routes_name.dart';
+import 'package:torrins_test/viewmodel/home_constroller.dart';
 
 late Size size;
 String logged = 'login success';
@@ -11,6 +13,7 @@ class ScreenSplash extends StatelessWidget {
   const ScreenSplash({Key? key}) : super(key: key);
   @override
   Widget build(BuildContext context) {
+    Get.put(HomeController());
     size = MediaQuery.of(context).size;
     checkUserLogin(context);
     return Scaffold(
