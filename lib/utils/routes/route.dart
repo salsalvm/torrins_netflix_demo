@@ -1,7 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:torrins_test/view/details/screen_details.dart';
 import 'package:torrins_test/view/home/screen_home.dart';
-import 'package:torrins_test/view/my_list.dart/screen_mylist.dart';
 import 'package:torrins_test/view/splash/splash_screen.dart';
 
 import 'routes_name.dart';
@@ -40,27 +38,17 @@ class KRoute {
               const ScreenHome(),
         );
 
-      //---details screen rout
-      case KRoutesName.details:
-        return kPageBuilder(
-          (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-          ) =>
-              const ScreenDetails(),
-        );
-             
-
-      case KRoutesName.mylist:
-        return kPageBuilder(
-          (
-            BuildContext context,
-            Animation<double> animation,
-            Animation<double> secondaryAnimation,
-          ) =>
-             const   ScreenMyList(clicked: false,),
-        );
+      // //---details screen rout
+      // case KRoutesName.details:
+      //   return kPageBuilder(
+      //     (
+      //       BuildContext context,
+      //       Animation<double> animation,
+      //       Animation<double> secondaryAnimation,
+      //     ) =>
+      //         const ScreenDetails(),
+      //   );
+            
 
       //---page not found screen rout
       default:

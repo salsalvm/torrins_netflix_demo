@@ -3,7 +3,6 @@ import 'package:get/get_state_manager/get_state_manager.dart';
 import 'package:torrins_test/res/colors.dart';
 import 'package:torrins_test/res/components/custom_button.dart';
 import 'package:torrins_test/res/constants.dart';
-import 'package:torrins_test/utils/routes/routes_name.dart';
 import 'package:torrins_test/viewmodel/home_constroller.dart';
 
 class BackgroundCard extends StatelessWidget {
@@ -15,17 +14,14 @@ class BackgroundCard extends StatelessWidget {
       init: HomeController(),
       builder: ((controller) => Stack(
             children: [
-              GestureDetector(
-                onTap: () => Navigator.pushNamed(context, KRoutesName.details),
-                child: Container(
-                  width: double.infinity,
-                  height: 480,
-                  decoration: const BoxDecoration(
-                    image: DecorationImage(
-                      fit: BoxFit.cover,
-                      image: NetworkImage(
-                        kMainImage,
-                      ),
+              Container(
+                width: double.infinity,
+                height: 480,
+                decoration: const BoxDecoration(
+                  image: DecorationImage(
+                    fit: BoxFit.cover,
+                    image: NetworkImage(
+                      kMainImage,
                     ),
                   ),
                 ),

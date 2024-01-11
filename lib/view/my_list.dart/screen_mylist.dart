@@ -3,7 +3,6 @@ import 'package:torrins_test/res/colors.dart';
 import 'package:torrins_test/res/constants.dart';
 import 'package:torrins_test/res/styles.dart';
 import 'package:torrins_test/view/widgets/app_bar_widget.dart';
-import 'package:torrins_test/view/widgets/main_card.dart';
 import 'package:torrins_test/view/widgets/main_title_card.dart';
 
 class ScreenMyList extends StatelessWidget {
@@ -17,7 +16,7 @@ class ScreenMyList extends StatelessWidget {
           child: Visibility(
             visible: clicked,
             child: const AppBarWidget(
-              title: 'No User',
+              title: 'NETFLIX',
             ),
           )),
       body: SafeArea(

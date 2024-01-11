@@ -32,11 +32,11 @@ class HomePage extends StatelessWidget {
               ListView(
                 children: const [
                   BackgroundCard(),
-                  MainTitleCard(title: 'Trending Now'),
+                  MainTitleCard(title: 'Trending Now',change: true,),
                   MainTitleCard(title: 'Popular on Netflix'),
-                  MainTitleCard(title: 'New Release'),
+                  MainTitleCard(title: 'New Release',change: true,),
                   MainTitleCard(title: 'Released in the Past year'),
-                  MainTitleCard(title: 'Us Movie')
+                  MainTitleCard(title: 'Us Movie',change: true,)
                 ],
               ),
               scrollNotifier.value == true

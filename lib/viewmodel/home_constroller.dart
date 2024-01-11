@@ -1,45 +1,54 @@
-
-import 'package:flutter/material.dart';
 import 'package:get/state_manager.dart';
 import 'package:torrins_test/data/response/api_response.dart';
-import 'package:torrins_test/model/result.dart';
+import 'package:torrins_test/model/movie_data.dart';
 import 'package:torrins_test/repository/home_repository.dart';
-import 'package:torrins_test/utils/routes/routes_name.dart';
 
 class HomeController extends GetxController {
   final HomeRepository homeRepo = HomeRepository();
 
-  var homeList =[];
+ 
   var demo ="";
   @override
   void onInit() {
-    getHomeDatas();
+    getTrendingMovie();
+    getTopMovie();
 
     super.onInit();
   }
 
-  RxBool test = true.obs;
+ List<Movie> topMovi = <Movie>[].obs;
+ List<Movie> popularMovi = <Movie>[].obs;
   //---------//
-  ApiResponse<Result> homeDatas = ApiResponse<Result>.loading();
-  void setHomeDatas(ApiResponse<Result> response) {
+  ApiResponse<MovieResponse> homeDatas = ApiResponse<MovieResponse>.loading();
+  void setHomeDatas(ApiResponse<MovieResponse> response) {
     homeDatas = response;
     update();
   }
 
-  Future<void> getHomeDatas() async {
-    setHomeDatas(ApiResponse<Result>.loading());
+  Future<void> getTrendingMovie() async {
+    setHomeDatas(ApiResponse<MovieResponse>.loading());
 
-    homeRepo.fetchHomeDatas().then((Result data ) {
-      setHomeDatas(ApiResponse<Result>.complete(data));
-      print(data.date.toString());
+    homeRepo.fetchPopularDatas().then((MovieResponse data ) {
+      setHomeDatas(ApiResponse<MovieResponse>.complete(data));
+      popularMovi = data.results.obs;
     }).onError((Object? error, StackTrace stackTrace) {
-      setHomeDatas(ApiResponse<Result>.error(error.toString()));
+      setHomeDatas(ApiResponse<MovieResponse>.error(error.toString()));
     });
     update();
   }
 
 
-    void viewDetailScreen(BuildContext context, Result product) {
-    Navigator.pushNamed(context, KRoutesName.details);
+  Future<void> getTopMovie() async {
+    homeRepo.fetchTopDatas().then((MovieResponse data ) {
+      setHomeDatas(ApiResponse<MovieResponse>.complete(data));
+  
+      topMovi = data.results.obs;
+
+    }).onError((Object? error, StackTrace stackTrace) {
+      
+      setHomeDatas(ApiResponse<MovieResponse>.error(error.toString()));
+    });
+    update();
   }
+
 }

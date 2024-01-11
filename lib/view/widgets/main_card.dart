@@ -1,20 +1,22 @@
-import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:get/get.dart';
+import 'package:torrins_test/model/movie_data.dart';
+import 'package:torrins_test/res/app_urls.dart';
 import 'package:torrins_test/res/colors.dart';
 import 'package:torrins_test/res/components/custom_button.dart';
 import 'package:torrins_test/res/constants.dart';
 import 'package:torrins_test/res/styles.dart';
-import 'package:torrins_test/utils/routes/routes_name.dart';
+import 'package:torrins_test/view/details/screen_details.dart';
 
 class MainCard extends StatelessWidget {
-  final String image;
+  final Movie item;
   final int index;
     final bool myList;
        final double width;
     final double height;
 
   const MainCard({
-    Key? key,required this.image,required this.index, this.myList=false,this.height=220,this.width=120
+    Key? key,required this.item,required this.index, this.myList=false,this.height=220,this.width=120
   }) : super(key: key);
 
   @override
@@ -24,7 +26,7 @@ class MainCard extends StatelessWidget {
       alignment: AlignmentDirectional.bottomCenter,
       children: [
         GestureDetector(
-          onTap: () => Navigator.pushNamed(context, KRoutesName.details),
+          onTap: () => Get.to(ScreenDetails(item:item)),
           child: Container(
             margin:const EdgeInsets.symmetric(horizontal: 10),
             width: width,
@@ -34,7 +36,7 @@ class MainCard extends StatelessWidget {
               image:  DecorationImage(
                 fit: BoxFit.cover,
                 image: NetworkImage(
-             image,
+             Apis().imageAppendUrl+item.posterPath,
                 ),
               ),
             ),

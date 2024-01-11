@@ -3,7 +3,6 @@ import 'dart:io';
 import 'dart:math';
 
 import 'package:http/http.dart' as http;
-import 'package:torrins_test/res/app_urls.dart';
 
 import '../app_exception.dart';
 import 'base_api_services.dart';
@@ -12,14 +11,15 @@ class NetworkApiService extends BaseApiServices {
   // -----------get Get method--------//
 
   @override
-  Future<void> getGetApiResponse({required String url}) async {
+  Future<void> getGetApiResponse({required String url,required String auth,}) async {
     dynamic responseJson;
     try {
-      final http.Response response = await http
-          .get(
-            Uri.parse(url),)
-          .timeout(const Duration(seconds: 10));
-             print(response);
+      final http.Response response =
+          await http.get(Uri.parse(url), headers: <String, String>{
+        'Authorization': auth
+      }).timeout(const Duration(seconds: 10));
+      
+      
 
       responseJson = returnResponse(response);
     } on SocketException {
@@ -34,18 +34,16 @@ class NetworkApiService extends BaseApiServices {
   // -----------get Post method--------//
   @override
   Future<dynamic> getPostApiResponse(
-      {required String url, required dynamic data}) async {
+      {required String url,required String auth, required dynamic data}) async {
     dynamic responseJson;
 
     try {
-      final http.Response response = await http
-          .post(
-            Uri.parse("$kBaseUrl+$url"),
-            body: data,headers: {}
-          )
-          .timeout(const Duration(seconds: 10));
-    
-    log(data);
+      final http.Response response = await http.post(
+          Uri.parse(url),
+          body: data,
+          headers: {}).timeout(const Duration(seconds: 10));
+
+      log(data);
 
       responseJson = returnResponse(response);
     } on SocketException {

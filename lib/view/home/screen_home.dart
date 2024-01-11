@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:torrins_test/res/colors.dart';
 import 'package:torrins_test/res/styles.dart';
-import 'package:torrins_test/view/details/screen_details.dart';
 import 'package:torrins_test/view/home/widgets/bottom_bar_items.dart';
 import 'package:torrins_test/view/home/widgets/home_page.dart';
 import 'package:torrins_test/view/my_list.dart/screen_mylist.dart';

@@ -12,8 +12,9 @@ class MainTitleCard extends StatelessWidget {
     final bool myList;
     final double width;
     final double height;
+    final bool change ;
 
-  const MainTitleCard({
+  const MainTitleCard({this.change=false,
     required this.title, this.myList=false, this.width=120,this.height=220,
     Key? key,
   }) : super(key: key);
@@ -40,9 +41,9 @@ class MainTitleCard extends StatelessWidget {
                         reverse: true,
                         scrollDirection: Axis.horizontal,
                         children: List.generate(
-                          10,
+                         change?controller.popularMovi.length: controller.topMovi.length,
                           (index) =>  MainCard(index: index,myList: myList,height: height,width: width,
-                              image:"https://upload.wikimedia.org/wikipedia/en/b/b1/Charly_1968.jpg"),
+                              item: change?controller.popularMovi[index]: controller.topMovi[index]),
                         ),
                       ),
           ),

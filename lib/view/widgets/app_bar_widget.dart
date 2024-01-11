@@ -13,24 +13,19 @@ class AppBarWidget extends StatelessWidget {
     return Container(
       color: kBlack.withOpacity(.9),
       child: Padding(
-        padding: const EdgeInsets.only(top: 7,bottom: 7),
+        padding: const EdgeInsets.only(top: 3,bottom: 10),
         child: Row(
           children: [
             kWidth,
-                  GestureDetector(
-                    onTap: () {
-                      Navigator.pop(context);
-                    },
-                    child: Image.network(
-                                  "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
-                                  width: 30,
-                                  height: 30,
-                                ),
-                  ),
+                  Image.network(
+                                "https://upload.wikimedia.org/wikipedia/commons/0/0b/Netflix-avatar.png",
+                                width: 30,
+                                height: 30,
+                              ),
             kWidth,
             Text(
               title,
-              style: KStyle.heading(color: kWhite,size: 26),
+              style: KStyle.heading(color: kWhite,size: 30),
             ),
             const Spacer(),
                

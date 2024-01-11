@@ -1,4 +1,6 @@
 import 'package:flutter/material.dart';
+import 'package:torrins_test/model/movie_data.dart';
+import 'package:torrins_test/res/app_urls.dart';
 import 'package:torrins_test/res/colors.dart';
 import 'package:torrins_test/res/components/custom_button.dart';
 import 'package:torrins_test/res/components/rich_text.dart';
@@ -8,8 +10,9 @@ import 'package:torrins_test/view/home/widgets/custom_button_widget.dart';
 import 'package:torrins_test/view/widgets/main_title_card.dart';
 
 class ScreenDetails extends StatelessWidget {
-  const ScreenDetails({super.key});
+  const ScreenDetails({super.key,required this.item});
 
+final Movie item;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -25,10 +28,10 @@ class ScreenDetails extends StatelessWidget {
                 height: 220,
                 decoration: BoxDecoration(
                   borderRadius: kradius3,
-                  image: const DecorationImage(
+                  image:  DecorationImage(
                     fit: BoxFit.cover,
                     image: NetworkImage(
-                      'https://upload.wikimedia.org/wikipedia/en/b/b1/Charly_1968.jpg',
+                      Apis().imageAppendUrl+item.backdropPath,
                     ),
                   ),
                 ),
@@ -47,7 +50,7 @@ class ScreenDetails extends StatelessWidget {
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
                 Text(
-                  "Charliee",
+                  "${item.title}",
                   style: KStyle.title(color: kWhite),
                 ),
                 kHeight5,
@@ -101,13 +104,13 @@ class ScreenDetails extends StatelessWidget {
                 kHeight,
                 Text(
                   maxLines: 3,
-                  "djfdslj fldaskjf alfj ldkfja ldkfjla fkldsjf dlkjfdaklf lkdfjda slfjdslk fjdsklf dlkjfd fjakj flkdjs",
+                  "${item.originalTitle}",
                   style: KStyle.content(color: kWhite, size: 10),
                 ),
                 kHeight,
                 Text(
                   maxLines: 3,
-                  "djfdslj fldaskjf alfj ldkfja ldkfjla fkldsjf dlkjfdaklf lkdfjda slfjdslk fjdsklf dlkjfd fjakj flkdjs",
+                  "${item.overview}",
                   style: KStyle.content(color: kGrey, size: 10),
                 ),
                 kHeight15,
@@ -136,7 +139,7 @@ class ScreenDetails extends StatelessWidget {
                   ],
                 ),
                 kHeight,
-              const MainTitleCard(title: 'More Like This'),
+              const MainTitleCard(title: 'More Like This',change: true,),
              const MainTitleCard(title: ''),
 
               ],
